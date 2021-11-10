@@ -11,14 +11,20 @@ A word search puzzle generator built with dart
 ```dart
 import 'package:word_search/word_search.dart';
 
-/**
- * The main file to test out the word search library
- */
+/// The main file to test out the word search library
 void main() {
-  print('Word Search Library!');
+  // ignore: avoid_print
+  print('Библиотека поиска слов!');
 
   // Create a list of words to be jumbled into a puzzle
-  final List<String> wl = ['hello', 'world', 'foo', 'bar', 'baz', 'dart'];
+  final List<String> wl = [
+    'привет',
+    'буквы',
+    'армавир',
+    'квитанция',
+    'голова',
+    'дом'
+  ];
 
   // Create the puzzle sessting object
   final WSSettings ws = WSSettings(
@@ -31,40 +37,49 @@ void main() {
     ]),
   );
 
-  // Create new instance of the WordSearch class
+  // Создайте новый экземпляр класса WordSearch
   final WordSearch wordSearch = WordSearch();
 
-  // Create a new puzzle
+  // Создать новую головоломку
   final WSNewPuzzle newPuzzle = wordSearch.newPuzzle(wl, ws);
 
-  /// Check if there are errors generated while creating the puzzle
+  /// Проверьте, нет ли ошибок при создании пазла
   if (newPuzzle.errors.isEmpty) {
     // The puzzle output
-    print('Puzzle 2D List');
+    // ignore: avoid_print
+    print('Пазл 2D Список');
+    // ignore: avoid_print
     print(newPuzzle.toString());
 
-    // Solve puzzle for given word list
+    // Решить головоломку для данного списка слов
     final WSSolved solved =
-        wordSearch.solvePuzzle(newPuzzle.puzzle, ['dart', 'word']);
-    // All found words by solving the puzzle
-    print('Found Words!');
-    solved.found.forEach((element) {
-      print('word: ${element.word}, orientation: ${element.orientation}');
+        wordSearch.solvePuzzle(newPuzzle.puzzle, ['буквы', 'дом', 'голова']);
+    // Все найденные слова путем решения головоломки
+    // ignore: avoid_print
+    print('Найденные слова!');
+    for (var element in solved.found) {
+      // ignore: avoid_print
+      print('слова: ${element.word}, орентация: ${element.orientation}');
+      // ignore: avoid_print
       print('x:${element.x}, y:${element.y}');
-    });
+    }
 
-    // All words that could not be found
-    print('Not found Words!');
-    solved.notFound.forEach((element) {
-      print('word: ${element}');
-    });
+    // Все слова, которые не удалось найти
+    // ignore: avoid_print
+    print('Не найденые слова!');
+    for (var element in solved.notFound) {
+      // ignore: avoid_print, unnecessary_brace_in_string_interps
+      print('слова: ${element}');
+    }
   } else {
-    // Notify the user of the errors
-    newPuzzle.errors.forEach((error) {
+    // Сообщите пользователю об ошибках
+    for (var error in newPuzzle.errors) {
+      // ignore: avoid_print
       print(error);
-    });
+    }
   }
 }
+
 ```
 
 ### Example Output
