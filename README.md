@@ -4,7 +4,7 @@
 
 ![Word Search](https://raw.githubusercontent.com/nisheed2440/word_search.dart/master/word-search.png?version=0.1.1)
 
-A word search puzzle generator built with dart
+Генератор головоломок для поиска слов, созданный с помощью дротика
 
 ### Example Usage
 
